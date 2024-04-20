@@ -2,20 +2,22 @@
 
 Auto-Enhance
 Sharpening
-Upscaling
-Background Removal
+Upscaling : limewire
+Background Removal : limewire
+restoration: 
 Generative fill
 Style Transfer: Apply the artistic style of a famous painting (e.g., Van Gogh, Monet) to your own photos, creating a unique artistic look.
 Image Colorization: Bring life to black and white photos by automatically or manually adding color.
 AI-Generated Elements
 Photorealistic Effects
 masking
+image to image: limewire
 image to manga(anime)
 image to sketch
 image to art
 image to pencil draw
-text to image
-image outpainting and inpainting
+text to image : limewire
+image outpainting and inpainting: limewire
 train with your own images
 cloth changing using ip adapter (https://replicate.com/lucataco/ip-adapter-faceid)https://github.com/tencent-ailab/IP-Adapter
 
@@ -38,3 +40,8 @@ Stable Diffusion
 Midjourney
 GauGAN
 Jasper Art(uses dalle2)
+
+plans: 
+limewire : 10 images/day = lmwr_sk_qVretommpl_vw8PBAgja0oO8SG20NlR0eIFQa4xGDng71utP
+segmind: 100calls/day
+getimg.ai: 100 images/month
