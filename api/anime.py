@@ -33,7 +33,7 @@ def face2paint(image: UploadFile):
     }
 
     headers = {
-        "X-RapidAPI-Key": "0717583e3emsh87521118c5fdb03p115662jsne0ab48a9cea6",
+        "X-RapidAPI-Key": "1f17a8228emsh3f049df9d193271p1c3fd9jsne1acd1e2223b", # 0717583e3emsh87521118c5fdb03p115662jsne0ab48a9cea6
         "X-RapidAPI-Host": "phototoanime1.p.rapidapi.com"
     }
 
