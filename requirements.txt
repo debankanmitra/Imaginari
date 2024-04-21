@@ -1,6 +1,7 @@
 #global
 fastapi==0.110.0
 uvicorn[standard]
+cloudinary==1.40.0
 
 #api
 requests==2.31.0

@@ -1,5 +1,6 @@
 from fastapi import FastAPI,UploadFile, File
 from api.anime import dreamshaperXL,face2paint
+from api.restore import restoreimg,cloudinary_upload
 
 
 
@@ -29,9 +30,11 @@ async def outpainting():
 async def removebg():
     return {"message": "Hello World6"}
 
-@app.get("/restore")
-async def restore():
-    return {"message": "Hello World7"}
+@app.post("/restore")
+def restore(image: UploadFile = File(...)):
+    imgfile = cloudinary_upload(image)
+    response = restoreimg(imgfile['url'],imgfile['name'])
+    return {"output": response['data']['2k']['url']}
 
 @app.post("/toanime")
 def toanime(image: UploadFile = File(...)):

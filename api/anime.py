@@ -40,3 +40,6 @@ def face2paint(image: UploadFile):
     response = requests.post(URL, data=payload, files=files, headers=headers)
 
     return response.json()
+
+
+# replicate model : https://replicate.com/grandlineai/instant-id-artistic
