@@ -4,8 +4,7 @@ from api.restore import restoreimg,cloudinary_upload
 from api.removebg import Background_Removal
 from api.generate import limewire,Item
 from api.outpaint import segmindOutpaint
-
-
+from api.upscale import photai_upscale
 
 
 app = FastAPI()
@@ -15,16 +14,15 @@ def generate(item: Item):
     response = limewire(item.style, item.prompt, item.negative_prompt)
     return {"output": response['url']}
 
-@app.get("/edit")
-async def edit():
-    return {"message": "Hello World2"}
 
-@app.get("/upscale")
-async def upscale():
-    return {"message": "Hello World3"}
+@app.post("/upscale")
+def upscale(image: UploadFile = File(...)):
+    file = cloudinary_upload(image)
+    response = photai_upscale(file['url'],file['name'])
+    return {"output": response}
 
 @app.get("/Inpainting")
-async def inpainting():
+def inpainting():
     return {"message": "Hello World4"}
 
 @app.post("/outpainting")
