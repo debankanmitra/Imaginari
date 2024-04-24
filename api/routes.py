@@ -1,14 +1,19 @@
-from fastapi import FastAPI,UploadFile, File
+from fastapi import FastAPI, File, UploadFile, Form
 from api.anime import dreamshaperXL,face2paint
 from api.restore import restoreimg,cloudinary_upload
+from api.removebg import Background_Removal
+from api.generate import limewire,Item
+from api.outpaint import segmindOutpaint
+
 
 
 
 app = FastAPI()
 
-@app.get("/generate")
-async def generate():
-    return {"message": "Hello World"}
+@app.post("/generate")
+def generate(item: Item):
+    response = limewire(item.style, item.prompt, item.negative_prompt)
+    return {"output": response['url']}
 
 @app.get("/edit")
 async def edit():
@@ -22,13 +27,17 @@ async def upscale():
 async def inpainting():
     return {"message": "Hello World4"}
 
-@app.get("/outpainting")
-async def outpainting():
-    return {"message": "Hello World5"}
+@app.post("/outpainting")
+def outpainting(image: UploadFile = File(...),prompt: str = Form(...),negative_prompt: str = Form(None)):
+    file = cloudinary_upload(image)
+    response = segmindOutpaint(file['url'], prompt, negative_prompt)
+    return {"output": response}
 
-@app.get("/removebg")
-async def removebg():
-    return {"message": "Hello World6"}
+@app.post("/removebg")
+def removebg(image: UploadFile = File(...)):
+    file = cloudinary_upload(image)
+    response = Background_Removal(file['url'])
+    return {"output": response}
 
 @app.post("/restore")
 def restore(image: UploadFile = File(...)):
