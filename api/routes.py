@@ -27,7 +27,7 @@ def inpainting(image: UploadFile = File(...),mask: UploadFile = File(...),prompt
     image = cloudinary_upload(image)
     mask = cloudinary_upload(mask)
     response = segmindInpaint(image['url'],mask['url'],prompt,negative_prompt)
-    return {"outpaint": response}
+    return {"output": response}
 
 @app.post("/outpainting")
 def outpainting(image: UploadFile = File(...),prompt: str = Form(...),negative_prompt: str = Form(None)):
