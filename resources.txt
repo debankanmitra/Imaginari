@@ -1,0 +1,27 @@
+sketch to reality : https://replicate.com/qr2ai/outline?prediction=wgksdwhxwsrgc0cez9vrch57fc
+sdxl lightining : https://replicate.com/bytedance/sdxl-lightning-4step
+https://www.segmind.com/models/sd1.5-inpainting
+https://platform.stability.ai/pricing
+
+https://platform.stability.ai/docs/api-reference#tag/Image-to-Image/operation/upscaleImage
+https://platform.stability.ai/docs/api-reference#tag/Upscale/paths/~1v2beta~1stable-image~1upscale~1creative~1result~1%7Bid%7D/get
+
+collab: https://colab.research.google.com/github/stability-ai/stability-sdk/blob/main/nbs/Stable_Image_API_Public.ipynb#scrollTo=vIzPj82p46wM
+https://colab.research.google.com/drive/1BLHslcWMV0IexEUspYspjK9cq-9n7lhC#scrollTo=Vj6qNTNVfP8W
+
+dalle: https://platform.openai.com/playground/chat
+getimg: https://getimg.ai/image-editor
+
+picsart: https://picsart.io/pricing/
+
+dalle editing: https://platform.openai.com/docs/api-reference/images/createEdit
+
+limewire usage: https://geekflare.com/ai/tool/limewire-ai-api/
+
+photai: https://www.phot.ai/google
+
+
+image mask generator: https://imagemasker.github.io/
+
+
+
