@@ -1,6 +1,6 @@
 # Imaginari
 
-✨ Imaginary is an AI-based image editing application that brings your creative visions to life. With a suite of powerful features, you can generate, upscale, remove backgrounds, outpaint, inpaint, and restore images effortlessly.
+✨ Imaginari is an AI-based image editing application that brings your creative visions to life. With a suite of powerful features, you can generate, upscale, remove backgrounds, outpaint, inpaint, and restore images effortlessly.
 
 ## 🚀 Features
 - Image Generation: Create stunning images from text prompts.
