@@ -25,11 +25,12 @@ Imaginary leverages state-of-the-art AI models to deliver top-notch image editin
 ## 🎨 Installation and Setup
 1. Clone the repository:
    ```
-      git clone https://github.com/debankanmitra/Imaginari.git
-      cd Imaginari
+   git clone https://github.com/debankanmitra/Imaginari.git
+   cd Imaginari
    ```
 2. Install backend dependencies:
-   ``` pip install -r requirements.txt
+   ```
+   pip install -r requirements.txt
    ```
 3. Start the Server
    ```
