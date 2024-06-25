@@ -3,6 +3,7 @@ import cloudinary
 from io import BytesIO
 import cloudinary.uploader
 from base64 import b64encode
+import os
 
 def toB64(imgUrl):
     return str(b64encode(requests.get(imgUrl).content))[2:-1]
@@ -12,8 +13,8 @@ def segmindOutpaint(imageUrl,prompt,negative_prompt):
     negprmpt = str(negative_prompt)
     cloudinary.config( 
         cloud_name = "dv0zkyn0a", 
-        api_key = "129753673536953", 
-        api_secret = "kwPv2OaL9blJmeh3Z50SCF9Uv1c" 
+        api_key = os.environ.get('CLOUDINARY_API_KEY'), 
+        api_secret = os.environ.get('CLOUDINARY_API_SECRET') 
     )
     url = "https://api.segmind.com/v1/sd1.5-outpaint"
 
@@ -35,7 +36,7 @@ def segmindOutpaint(imageUrl,prompt,negative_prompt):
   "seed": 124567
     }
 
-    response = requests.post(url, json=data, headers={'x-api-key': "SG_ea36d835d551d052"})
+    response = requests.post(url, json=data, headers={'x-api-key': os.environ.get('SEGMIND_API_KEY')})
 
     if response.status_code == 200:
           image=BytesIO(response.content)

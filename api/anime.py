@@ -2,6 +2,7 @@ from fastapi import UploadFile
 import replicate
 import requests
 from typing import Dict
+import os
 
 def dreamshaperXL(image, prompt, negative_prompt):
     input = {
@@ -10,7 +11,7 @@ def dreamshaperXL(image, prompt, negative_prompt):
         "negative_prompt": negative_prompt
     }
 
-    api = replicate.Client(api_token="r8_3VEJ3vpKtGkZ4WhynJ7cEgUAgL24rAz2UTJrr")
+    api = replicate.Client(api_token=os.environ.get('REPLICATE_API_TOKEN'))
 
     output = api.run(
         "grandlineai/instant-id-artistic:0343e59373a43df5a2e9ce96d11c1259108a7660ae4d4a6ef9340014d7b14ed9",
@@ -33,7 +34,7 @@ def face2paint(image: UploadFile):
     }
 
     headers = {
-        "X-RapidAPI-Key": "1f17a8228emsh3f049df9d193271p1c3fd9jsne1acd1e2223b", # 0717583e3emsh87521118c5fdb03p115662jsne0ab48a9cea6
+        "X-RapidAPI-Key": os.environ.get('RAPIDAPI_TOKEN'), # 0717583e3emsh87521118c5fdb03p115662jsne0ab48a9cea6
         "X-RapidAPI-Host": "phototoanime1.p.rapidapi.com"
     }
 

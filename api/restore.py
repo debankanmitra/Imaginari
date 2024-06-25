@@ -4,13 +4,14 @@ import cloudinary.uploader
 import requests
 from fastapi import UploadFile
 import cloudinary
+import os
 
 
 def cloudinary_upload(image: UploadFile):
     cloudinary.config( 
         cloud_name = "dv0zkyn0a", 
-        api_key = "129753673536953", 
-        api_secret = "kwPv2OaL9blJmeh3Z50SCF9Uv1c" 
+        api_key = os.environ.get('CLOUDINARY_API_KEY'), 
+        api_secret = os.environ.get('CLOUDINARY_API_SECRET') 
     )
 
     image_contents = image.file.read()
@@ -27,7 +28,7 @@ def restoreimg(cloudinary_url,filename):
     url = 'https://prodapi.phot.ai/external/api/v2/user_activity/old-photos-restore-2k'
 
     headers = {
-    'x-api-key': '6624c8ef4f19180796bc9040_e1900e9cdb9973724f61_apyhitools',
+    'x-api-key': os.environ.get('PHOTAI_API_KEY'),
     'Content-Type': 'application/json'
     }
 

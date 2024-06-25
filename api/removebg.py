@@ -2,16 +2,17 @@ from io import BytesIO
 import cloudinary.uploader
 import requests
 import cloudinary
+import os
 
 def Background_Removal(imageUrl):
       cloudinary.config( 
         cloud_name = "dv0zkyn0a", 
-        api_key = "129753673536953", 
-        api_secret = "kwPv2OaL9blJmeh3Z50SCF9Uv1c" 
+        api_key = os.environ.get('CLOUDINARY_API_KEY'), 
+        api_secret = os.environ.get('CLOUDINARY_API_SECRET') 
     )
 
       url = "https://api.segmind.com/v1/bg-removal"
-      headers = {"x-api-key": "SG_ea36d835d551d052"}
+      headers = {"x-api-key": os.environ.get('SEGMIND_API_KEY')}
 
       data = {"method": "object", "imageUrl": imageUrl}
       response = requests.post(url, json=data, headers=headers)

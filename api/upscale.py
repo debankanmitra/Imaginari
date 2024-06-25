@@ -1,5 +1,5 @@
 import requests
-
+import os
 
 
 
@@ -8,7 +8,7 @@ def photai_upscale(image_url,filename):
     url = 'https://prodapi.phot.ai/external/api/v2/user_activity/create-upscaler-2k'
 
     headers = {
-        'x-api-key': '6624c8ef4f19180796bc9040_e1900e9cdb9973724f61_apyhitools',
+        'x-api-key': os.environ.get('PHOTAI_API_KEY'),
         'Content-Type': 'application/json'
     }
 

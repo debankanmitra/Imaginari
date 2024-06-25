@@ -1,6 +1,7 @@
 import requests
 from pydantic import BaseModel
 from typing import Optional
+import os
 
 class Item(BaseModel):
     style: Optional[str] = None
@@ -18,11 +19,13 @@ def limewire(style, prompt, negative_prompt):
         "style": style
     }
 
+    token = os.environ.get('LIMEWIRE_TOKEN')
+
     headers = {
         "Content-Type": "application/json",
         "X-Api-Version": "v1",
         "Accept": "application/json",
-        "Authorization": "Bearer lmwr_sk_qVretommpl_vw8PBAgja0oO8SG20NlR0eIFQa4xGDng71utP"
+        "Authorization": f"Bearer {token}"
     }
 
     response = requests.post(url, json=payload, headers=headers)
