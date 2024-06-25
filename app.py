@@ -1,4 +1,4 @@
-from fastapi import FastAPI, File, UploadFile, Form, HTTPException
+from fastapi import FastAPI, File, UploadFile, Form
 from api.anime import dreamshaperXL,face2paint
 from api.restore import restoreimg,cloudinary_upload
 from api.removebg import Background_Removal
@@ -6,6 +6,7 @@ from api.generate import limewire,Item
 from api.outpaint import segmindOutpaint
 from api.upscale import photai_upscale
 from api.inpaint import segmindInpaint
+from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 app = FastAPI()
@@ -18,13 +19,8 @@ app = FastAPI()
 
 @app.post("/generate")
 def generate(item: Item):
-    try:
-        response = limewire(item.style, item.prompt, item.negative_prompt)
-        return {"output": response['url']}
-    except ValueError as e:
-        raise HTTPException(status_code=400, detail=str(e))
-    except Exception as e:
-        raise HTTPException(status_code=500, detail="An unexpected error occurred")
+    response = limewire(item.style, item.prompt, item.negative_prompt)
+    return {"output": response['url']}
 
 
 @app.post("/upscale")
@@ -75,22 +71,23 @@ def toanime(image: UploadFile = File(...)):
 
 
 
-# origins = [
-#     "http://localhost.tiangolo.com",
-#     "https://localhost.tiangolo.com",
-#     "http://localhost:3000",
-#     "http://localhost:8080",
-#     "http://localhost:5173"
-# ]
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://localhost:3000",
+    "http://localhost:8080",
+    "http://localhost:5173",
+    "https://imaginari-one.vercel.app"
+]
 
 
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=["http://localhost:5173"],
-#     allow_credentials=True,
-#     allow_methods=["*"],
-#     allow_headers=["*"],
-# )
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 if __name__ == "__main__":
     uvicorn.run(app)

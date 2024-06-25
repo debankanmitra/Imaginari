@@ -9,8 +9,6 @@ class Item(BaseModel):
     negative_prompt: Optional[str] = None
 
 def limewire(style, prompt, negative_prompt):
-    if not style or not prompt:
-        raise ValueError("Style and prompt must be provided")
 
     url = "https://api.limewire.com/api/image/generation"
 
@@ -22,7 +20,7 @@ def limewire(style, prompt, negative_prompt):
         "style": style
     }
 
-    token = os.environ.get('LIMEWIRE_API_KEY')
+    token = 'lmwr_sk_qVretommpl_vw8PBAgja0oO8SG20NlR0eIFQa4xGDng71utP'
 
     headers = {
         "Content-Type": "application/json",
