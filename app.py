@@ -8,8 +8,13 @@ from api.upscale import photai_upscale
 from api.inpaint import segmindInpaint
 import uvicorn
 
-
 app = FastAPI()
+
+
+@app.get("/get")
+def get():
+    return {"message": "Hello World"}
+
 
 @app.post("/generate")
 def generate(item: Item):
