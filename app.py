@@ -12,11 +12,6 @@ import uvicorn
 app = FastAPI()
 
 
-# @app.get("/get")
-# def get():
-#     return {"message": "Hello World"}
-
-
 @app.post("/generate")
 def generate(item: Item):
     response = limewire(item.style, item.prompt, item.negative_prompt)
@@ -77,7 +72,8 @@ origins = [
     "http://localhost:3000",
     "http://localhost:8080",
     "http://localhost:5173",
-    "https://imaginari-one.vercel.app"
+    "https://imaginari-one.vercel.app",
+    "https://imaginari-frontend.vercel.app"
 ]
 
 
