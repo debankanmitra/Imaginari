@@ -19,7 +19,7 @@ def limewire(style, prompt, negative_prompt):
         "style": style
     }
 
-    token = os.environ.get('LIMEWIRE_TOKEN')
+    token = os.environ.get('LIMEWIRE_API_KEY')
 
     headers = {
         "Content-Type": "application/json",
@@ -30,6 +30,7 @@ def limewire(style, prompt, negative_prompt):
 
     response = requests.post(url, json=payload, headers=headers)
     credits_remaining=response.json()['credits_remaining']
-    url = response.json()['data'][0]['asset_url']
+    url = response.json()
+    print(url)
 
     return {"credits_remaining": credits_remaining, "url": url}
