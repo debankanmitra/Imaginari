@@ -9,6 +9,9 @@ class Item(BaseModel):
     negative_prompt: Optional[str] = None
 
 def limewire(style, prompt, negative_prompt):
+    if not style or not prompt:
+        raise ValueError("Style and prompt must be provided")
+
     url = "https://api.limewire.com/api/image/generation"
 
     payload = {

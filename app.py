@@ -1,4 +1,4 @@
-from fastapi import FastAPI, File, UploadFile, Form
+from fastapi import FastAPI, File, UploadFile, Form, HTTPException
 from api.anime import dreamshaperXL,face2paint
 from api.restore import restoreimg,cloudinary_upload
 from api.removebg import Background_Removal
@@ -11,15 +11,20 @@ import uvicorn
 app = FastAPI()
 
 
-@app.get("/get")
-def get():
-    return {"message": "Hello World"}
+# @app.get("/get")
+# def get():
+#     return {"message": "Hello World"}
 
 
 @app.post("/generate")
 def generate(item: Item):
-    response = limewire(item.style, item.prompt, item.negative_prompt)
-    return {"output": response['url']}
+    try:
+        response = limewire(item.style, item.prompt, item.negative_prompt)
+        return {"output": response['url']}
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail="An unexpected error occurred")
 
 
 @app.post("/upscale")
