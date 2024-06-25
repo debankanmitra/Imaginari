@@ -20,7 +20,7 @@ def limewire(style, prompt, negative_prompt):
         "style": style
     }
 
-    token = os.environ.get('LIMEWIRE_API_KEY')
+    token = os.environ.get('LIMEWIRE_TOKEN')
 
     headers = {
         "Content-Type": "application/json",
