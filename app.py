@@ -2,22 +2,22 @@ from api.routes import app
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
-origins = [
-    "http://localhost.tiangolo.com",
-    "https://localhost.tiangolo.com",
-    "http://localhost:3000",
-    "http://localhost:8080",
-    "http://localhost:5173"
-]
+# origins = [
+#     "http://localhost.tiangolo.com",
+#     "https://localhost.tiangolo.com",
+#     "http://localhost:3000",
+#     "http://localhost:8080",
+#     "http://localhost:5173"
+# ]
 
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=["http://localhost:5173"],
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
 
 # When a Python file is run directly as a script, the special variable __name__ is set to "__main__" within that script. 
 # This allows you to determine whether the script is being run as the main program or if it is being imported as a module
