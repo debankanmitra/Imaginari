@@ -8,6 +8,7 @@ from api.upscale import photai_upscale
 from api.inpaint import segmindInpaint
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
+from mangum import Mangum
 
 app = FastAPI()
 
@@ -29,6 +30,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+handler = Mangum(app, lifespan="off")
 
 @app.post("/generate")
 def generate(item: Item):
