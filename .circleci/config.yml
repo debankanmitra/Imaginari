@@ -30,7 +30,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - Imaginari/lambda_function.zip
+            - lambda_function.zip
   
   deploy_project:
     executor: aws-cli/default
@@ -52,7 +52,7 @@ jobs:
       #     command: aws lambda update-function-code --function-name mindstride-fastapi --s3-bucket mindstride-lambda-post --s3-key lambda_function.zip
       - run:
           name: Deploy to Lambda
-          command:   aws lambda update-function-code --function-name mindstride-fastapi --zip-file fileb://Imaginari/lambda_function.zip
+          command:   aws lambda update-function-code --function-name mindstride-fastapi --zip-file fileb://lambda_function.zip
 
 # Invoke jobs via workflows
 workflows:
