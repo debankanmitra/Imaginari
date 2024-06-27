@@ -32,6 +32,10 @@ app.add_middleware(
 
 handler = Mangum(app, lifespan="off")
 
+@app.get("/test")
+def test():
+    return {"message": "Hello World"}
+
 @app.post("/generate")
 def generate(item: Item):
     response = limewire(item.style, item.prompt, item.negative_prompt)
