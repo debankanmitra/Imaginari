@@ -10,3 +10,5 @@ python-multipart
 # services
 replicate==0.25.2
 segmind==0.2.3
+
+mangum

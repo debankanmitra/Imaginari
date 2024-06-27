@@ -1,5 +1,5 @@
 from fastapi import FastAPI, File, UploadFile, Form
-from api.anime import dreamshaperXL,face2paint
+from api.anime import face2paint
 from api.restore import restoreimg,cloudinary_upload
 from api.removebg import Background_Removal
 from api.generate import limewire,Item
