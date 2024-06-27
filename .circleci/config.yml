@@ -23,7 +23,7 @@ jobs:
       - run:
           name: Create deployment package
           command: (cd lib; zip ../lambda_function.zip -r .) && zip lambda_function.zip -u main.py
-          working_directory: Imaginari
+          # working_directory: Imaginari
       - run:
           name: list directory
           command: ls
