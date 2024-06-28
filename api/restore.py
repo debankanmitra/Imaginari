@@ -29,7 +29,7 @@ def restoreimg(cloudinary_url,filename):
     url = 'https://prodapi.phot.ai/external/api/v2/user_activity/old-photos-restore-2k'
 
     headers = {
-    'x-api-key': '667e72e2ec4620bebeef983c_5a94918ad1982dec4ddf_apyhitools',
+    'x-api-key': os.environ.get('PHOTAI_API_KEY'),
     'Content-Type': 'application/json'
     }
 
