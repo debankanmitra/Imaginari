@@ -1,6 +1,6 @@
 from fastapi import FastAPI, File, UploadFile, Form
 from api.anime import face2paint
-from api.restore import restoreimg,cloudinary_upload
+from api.restore import microsoft_restore, restoreimg,cloudinary_upload
 from api.removebg import Background_Removal
 from api.generate import limewire,Item
 from api.outpaint import segmindOutpaint
@@ -70,8 +70,10 @@ def removebg(image: UploadFile = File(...)):
 @app.post("/restore")
 def restore(image: UploadFile = File(...)):
     imgfile = cloudinary_upload(image)
-    response = restoreimg(imgfile['url'],imgfile['name'])
-    return {"output": response['data']['2k']['url']}
+    # response = restoreimg(imgfile['url'],imgfile['name'])
+    response = microsoft_restore(imgfile['url'])
+    # return {"output": response['data']['2k']['url']}
+    return {"output": response}
 
 @app.post("/toanime")
 def toanime(image: UploadFile = File(...)):
