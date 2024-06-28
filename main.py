@@ -42,41 +42,41 @@ def generate(item: Item):
     return {"output": response['url']}
 
 
-@app.post("/upscale")
-def upscale(image: UploadFile = File(...)):
-    file = cloudinary_upload(image)
-    response = photai_upscale(file['url'],file['name'])
-    return {"output": response}
+# @app.post("/upscale")
+# def upscale(image: UploadFile = File(...)):
+#     file = cloudinary_upload(image)
+#     response = photai_upscale(file['url'],file['name'])
+#     return {"output": response}
 
-@app.post("/inpainting")
-def inpainting(image: UploadFile = File(...),mask: UploadFile = File(...),prompt: str = Form(...),negative_prompt: str = Form(None)):
-    image = cloudinary_upload(image)
-    mask = cloudinary_upload(mask)
-    response = segmindInpaint(image['url'],mask['url'],prompt,negative_prompt)
-    return {"output": response}
+# @app.post("/inpainting")
+# def inpainting(image: UploadFile = File(...),mask: UploadFile = File(...),prompt: str = Form(...),negative_prompt: str = Form(None)):
+#     image = cloudinary_upload(image)
+#     mask = cloudinary_upload(mask)
+#     response = segmindInpaint(image['url'],mask['url'],prompt,negative_prompt)
+#     return {"output": response}
 
-@app.post("/outpainting")
-def outpainting(image: UploadFile = File(...),prompt: str = Form(...),negative_prompt: str = Form(None)):
-    file = cloudinary_upload(image)
-    response = segmindOutpaint(file['url'], prompt, negative_prompt)
-    return {"output": response}
+# @app.post("/outpainting")
+# def outpainting(image: UploadFile = File(...),prompt: str = Form(...),negative_prompt: str = Form(None)):
+#     file = cloudinary_upload(image)
+#     response = segmindOutpaint(file['url'], prompt, negative_prompt)
+#     return {"output": response}
 
-@app.post("/removebg")
-def removebg(image: UploadFile = File(...)):
-    file = cloudinary_upload(image)
-    response = Background_Removal(file['url'])
-    return {"output": response}
+# @app.post("/removebg")
+# def removebg(image: UploadFile = File(...)):
+#     file = cloudinary_upload(image)
+#     response = Background_Removal(file['url'])
+#     return {"output": response}
 
-@app.post("/restore")
-def restore(image: UploadFile = File(...)):
-    imgfile = cloudinary_upload(image)
-    response = restoreimg(imgfile['url'],imgfile['name'])
-    return {"output": response['data']['2k']['url']}
+# @app.post("/restore")
+# def restore(image: UploadFile = File(...)):
+#     imgfile = cloudinary_upload(image)
+#     response = restoreimg(imgfile['url'],imgfile['name'])
+#     return {"output": response['data']['2k']['url']}
 
-@app.post("/toanime")
-def toanime(image: UploadFile = File(...)):
-    response_url = face2paint(image)
-    return {"output": response_url['body']['imageUrl']}
+# @app.post("/toanime")
+# def toanime(image: UploadFile = File(...)):
+#     response_url = face2paint(image)
+#     return {"output": response_url['body']['imageUrl']}
 
 
 
