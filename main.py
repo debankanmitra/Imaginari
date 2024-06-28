@@ -32,9 +32,9 @@ app.add_middleware(
 
 handler = Mangum(app, lifespan="off")
 
-@app.get("/test")
-def test():
-    return {"message": "Hello World"}
+# @app.get("/test")
+# def test():
+#     return {"message": "Hello World"}
 
 @app.post("/generate")
 def generate(item: Item):
