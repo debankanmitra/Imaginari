@@ -11,8 +11,8 @@ import os
 def cloudinary_upload(image: UploadFile):
     cloudinary.config( 
         cloud_name = "dv0zkyn0a", 
-        api_key = '129753673536953', 
-        api_secret = 'kwPv2OaL9blJmeh3Z50SCF9Uv1c' 
+        api_key = os.environ.get('CLOUDINARY_API_KEY'), 
+        api_secret = os.environ.get('CLOUDINARY_API_SECRET') 
     )
 
     image_contents = image.file.read()

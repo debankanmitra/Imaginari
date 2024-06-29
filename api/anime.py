@@ -1,7 +1,6 @@
 from fastapi import UploadFile
 import replicate
 import requests
-from typing import Dict
 import os
 
 def dreamshaperXL(image, prompt, negative_prompt):

@@ -4,7 +4,7 @@ from api.restore import microsoft_restore, restoreimg,cloudinary_upload
 from api.removebg import Background_Removal
 from api.generate import limewire,Item
 from api.outpaint import segmindOutpaint
-from api.upscale import photai_upscale
+from api.upscale import limewire_upscale, photai_upscale
 from api.inpaint import segmindInpaint
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
@@ -46,6 +46,7 @@ def generate(item: Item):
 def upscale(image: UploadFile = File(...)):
     file = cloudinary_upload(image)
     response = photai_upscale(file['url'],file['name'])
+    # response = limewire_upscale(image)
     return {"output": response}
 
 @app.post("/inpainting")

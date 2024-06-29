@@ -22,18 +22,18 @@ def segmindInpaint(imageUrl,maskUrl,prompt,negative_prompt):
 
     # Request payload
     data = {
-  "prompt": prmpt,
-  "negative_prompt": negprmpt,
-  "samples": 1,
-  "image": toB64(imageUrl),
-  "mask": toB64(maskUrl),
-  "scheduler": "DDIM",
-  "num_inference_steps": 25,
-  "guidance_scale": 7.5,
-  "strength": 1,
-  "seed": 17123564234,
-  "img_width": 512,
-  "img_height": 512
+        "prompt": prmpt,
+        "negative_prompt": negprmpt,
+        "samples": 1,
+        "image": toB64(imageUrl),
+        "mask": toB64(maskUrl),
+        "scheduler": "DDIM",
+        "num_inference_steps": 25,
+        "guidance_scale": 7.5,
+        "strength": 1,
+        "seed": 17123564234,
+        "img_width": 512,
+        "img_height": 512
     }
 
     response = requests.post(url, json=data, headers={'x-api-key': os.environ.get('SEGMIND_API_KEY')})
